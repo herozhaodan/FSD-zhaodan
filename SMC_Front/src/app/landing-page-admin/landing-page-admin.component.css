@@ -1,0 +1,26 @@
+   .ui{
+                      width:700px;
+                      height:50px;
+                      list-style: none;
+                      margin:0;
+                      padding:0;
+                      align-content: center
+                  }
+            .ui li{
+                
+                width:150px;
+                  margin:0 10px;
+                float: left;/*该处换为display:inline-block;同样效果*/
+    
+            }
+    
+            .ui li a{
+                width:150px;
+                height:50px;
+                padding:0 20px;
+                font-size: 12px;
+                line-height:50px;
+                background: rgb(182, 180, 180);
+                display: inline-block;
+                cursor: pointer;
+            }

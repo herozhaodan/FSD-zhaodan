@@ -1,0 +1,26 @@
+<div class="col-md-6">
+    <h2 class="text-center">Add Company</h2>
+    <form>
+      <div class="form-group">
+        <label for="nm">Name:</label>
+        <input type="nm" [(ngModel)]="company.nm" placeholder="nm" nm="nm" class="form-control" id="nm">
+      </div>
+
+      <div class="form-group">
+        <label for="cd">Company Code:</label>
+        <input [(ngModel)]="company.cd" placeholder="" nm="cd" class="form-control" id="cd">
+      </div>
+
+      <div class="form-group">
+        <label for="turnOver">Turn Over:</label>
+        <input [(ngModel)]="company.turnOver" placeholder="" nm="turnOver" class="form-control" id="turnOver">
+      </div>
+    
+      <div class="form-group">
+        <label for="ceo">CEO</label>
+        <input [(ngModel)]="company.ceo" placeholder="CEO" nm="CEO" class="form-control" id="ceo">
+      </div>
+    
+      <button class="btn btn-success" (click)="createCompany()">Create</button>
+    </form>
+</div>

@@ -1,0 +1,38 @@
+<div>
+    &nbsp;&nbsp; Select Companuy/Sector
+  <select name="type">
+    <option >Company</option>
+    <option>Sector</option>
+  </select>
+  </div>
+
+  <div>
+      &nbsp;&nbsp; Select Stock Exchange
+    <select name="exchange">
+        <option >BSE</option>
+        <option>NSE</option>
+    </select>
+    </div>
+
+
+<div>
+  &nbsp;&nbsp; Company Name
+<select name="company">
+  <option *ngFor="let company of companies"
+    value="{{company.id}}">{{company.name}}</option>
+</select>
+</div>
+<div >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="button" (click)="loadData()" value="Generate Map">
+</div>
+
+<h1>
+    {{title}}
+</h1>
+  <fusioncharts
+    width="700"
+    height="400"
+    type="Column2d"
+    [dataSource]="dataSource"
+  >
+  </fusioncharts>
