@@ -1,0 +1,5 @@
+me/fsd/ass/mod/entity/User.class
+me/fsd/ass/mod/UserServiceApp.class
+me/fsd/ass/mod/entity/Role.class
+me/fsd/ass/mod/dao/UserRepository.class
+me/fsd/ass/mod/controller/UserController.class
