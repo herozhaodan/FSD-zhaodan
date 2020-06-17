@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/EntityService/EntityService.iml" filepath="$PROJECT_DIR$/EntityService/EntityService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ModZuul/ModZuul.iml" filepath="$PROJECT_DIR$/ModZuul/ModZuul.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SMCEureka/SMCEureka.iml" filepath="$PROJECT_DIR$/SMCEureka/SMCEureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SMCParent.iml" filepath="$PROJECT_DIR$/SMCParent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TrainingService/TrainingService.iml" filepath="$PROJECT_DIR$/TrainingService/TrainingService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UserService/UserService.iml" filepath="$PROJECT_DIR$/UserService/UserService.iml" />
+    </modules>
+  </component>
+</project>
