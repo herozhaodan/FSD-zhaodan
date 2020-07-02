@@ -1,0 +1,35 @@
+# Docker command:
+
+# 1. Create network
+docker network create smc_network
+
+# 2. Run container MYSQL
+docker container run --name mysqldb --network smc_network -e MYSQL_ROOT_PASSWORD=a123456b -e MYSQL_DATABASE=master -d mysql:8
+
+
+# 3. build app
+# 3.1 build Eureka
+# Go to SMC Eureka folder 
+docker build -t smc-eureka .
+# 3.2 buill Zuul
+# Go to SMC zuul folder (folder name is ModZuul)
+docker build -t smc-zuul .
+# 3.3 build entity info service
+# Go to SMC entity info service folder 
+docker build -t entity-info-service .
+
+# 4. List images:
+docker image ls
+
+# 5. Running the docker image
+# 5.1 Run Eureka
+docker run --name smc-eureka --network smc_network -p 8888:8888 smc-eureka
+# 5.2 Run Zuul
+docker run --name smc-zuul --network smc_network -p 9000:9000 smc-zuul
+# 5.3 Run User service
+docker run --network smc_network -p 8081:8081 smc-user-service
+# 5.4 Run User service
+docker run --network smc_network -p 8082:8082 smc-entity-info-service
+
+# 5.5 Run Angular
+ng serve

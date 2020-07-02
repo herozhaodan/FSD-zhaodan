@@ -1,0 +1,81 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') { 
+            steps {
+                bat 'mvn -B -DskipTests clean package' 
+            }
+        }
+		
+		stage('Build docker images') { 
+            steps {
+				
+				dir("SmcEureka") {
+    			    bat 'docker build -t smc-eureka .'
+                }
+				dir("SmcZuul") {
+                    bat 'docker build -t smc-zuul .'
+				}
+				dir("UserService") {
+					bat 'docker build -t smc-user-service .'
+				}
+				dir("EntityInfoService") {
+					bat 'docker build -t smc-entity-info-service .'
+				}
+            }
+        }
+		
+		stage('Run eureka') { 
+            steps {
+			  script {
+                try {
+                  bat 'docker container stop smc-eureka'
+				  bat 'docker container rm smc-eureka'
+                } catch (err) {
+                  echo err
+                }
+              }
+			 
+              
+		      bat 'docker run -d --name smc-eureka --network smc_network -p 8888:8888 smc-eureka'
+            }
+		}
+		stage('Run zuul') { 
+			steps {
+			  script {
+                try {
+                  bat 'docker container stop smc-zuul'
+				  bat 'docker container rm smc-zuul'
+                } catch (err) {
+                  echo err
+                }
+              }
+			  
+              
+              bat 'docker run -d --name smc-zuul --network smc_network -p 9000:9000 mod-zuul'
+            }
+		}
+		stage('Run user service') {
+		    steps {
+			  catchError {
+                   bat 'docker container stop smc-user-service'
+				   bat 'docker container rm smc-user-service'
+                
+              }
+              
+              bat 'docker run -d --name smc-user-service --network smc_network -p 8081:8081 mod-user-service'
+            }
+        }
+        stage('Run entit info service') {
+		    steps {
+			  catchError {
+                   bat 'docker container stop smc-entity-info-service'
+				   bat 'docker container rm smc-entity-info-service'
+                
+              }
+              
+              bat 'docker run -d --name smc-entity-info-service --network smc_network -p 8082:8082 smc-entity-info-service'
+            }
+        }
+    }
+}
